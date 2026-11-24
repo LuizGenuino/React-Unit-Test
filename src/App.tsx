@@ -1,11 +1,13 @@
+import List from "./components/List"
 
 function App() {
 
-  return (
-    <>
-      <h1>Hello World</h1>
-    </>
-  )
+
+    return (
+        <>
+            <List initialItems={['Luiz', 'Gustavo', 'Lucas']} />
+        </>
+    )
 }
 
 export default App
