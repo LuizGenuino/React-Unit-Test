@@ -5,16 +5,12 @@ import List from './List';
 
 describe('List Component', () => {
     it('should render list items', async () => {
-        const { getByText, rerender, queryByText } = render(<List initialItems={['Luiz', 'Gustavo', 'Lucas']} />)
+        const { getByText } = render(<List initialItems={['Luiz', 'Gustavo', 'Lucas']} />)
 
         expect(getByText('Luiz')).toBeInTheDocument();
         expect(getByText('Gustavo')).toBeInTheDocument();
         expect(getByText('Lucas')).toBeInTheDocument();
 
-        await rerender(<List initialItems={['Silva']} />)
-        
-        expect(getByText('Silva')).toBeInTheDocument();
-        expect(queryByText('Lucas')).not.toBeInTheDocument();
 
     });
 

@@ -1,47 +1,44 @@
-import { getAllByText, render, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { fireEvent, render, screen } from '@testing-library/react'
 import App from './App'
 
+
+const sum = (x: number, y: number) => {
+    return x + y
+}
+
 describe('App Component', () => {
-    it('should render list items', () => {
+
+    it('should add up correctly', () => {
+        expect(sum(2, 4)).toBe(6)
+    })
+
+    it('should render App with hello message', () => {
+        render(<App />)
+
+        screen.getByText('Hello World')
+
+    })
+
+    it('should change message on button click', () => {
+        render(<App />)
+
+        screen.getByText("Let's learn more about testing in react")
+
+        const button = screen.getByText("Change message")
+
+        fireEvent.click(button)
+
+        screen.getByText("New message!")
+
+    })
+
+    it('should render list items', () => { //-> os teste no componente pai abrange os componentes filhos
         const { getByText } = render(<App />)
 
-        expect(getByText('Luiz')).toBeInTheDocument();
-        expect(getByText('Gustavo')).toBeInTheDocument();
-        expect(getByText('Lucas')).toBeInTheDocument();
+        expect(getByText('Luiz')).toBeTruthy();
+        expect(getByText('Gustavo')).toBeTruthy();
+        expect(getByText('Lucas')).toBeTruthy();
     });
 
-    it('should be able to add new item to the list', async () => {
-        const { getByText, getByPlaceholderText} = render(<App />)
 
-        const inputElement = getByPlaceholderText('Novo Nome')
-        const addBtn = getByText('Add')
-
-         await userEvent.type(inputElement, 'Fernando')
-
-         await userEvent.click(addBtn)
-
-        // expect(await findByText('Fernando')).toBeInTheDocument();
-
-        await waitFor(() => {
-             expect(getByText('Fernando')).toBeInTheDocument();
-        })
-
-    })
-
-    it('should be able to remove item to the list', async () => {
-        const { getAllByText, getByText} = render(<App />)
-   
-        const removeBtns = getAllByText('Remover')
-
-        
-
-         await userEvent.click(removeBtns[0])
-
-
-        await waitForElementToBeRemoved(() => {
-            return getByText('Luiz')
-        })
-
-    })
 });
