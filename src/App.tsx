@@ -1,5 +1,6 @@
 import { useState } from "react"
 import List from "./components/List"
+import Button from "./components/Button"
 
 function App() {
 
@@ -11,6 +12,8 @@ function App() {
             <p>{message}</p>
 
             <button onClick={() => setMessage("New message!")} >Change message</button>
+
+            <Button disabled={true} onClick={() => console.log('cick')}>Click me</Button>
 
             <List initialItems={['Luiz', 'Gustavo', 'Lucas']} />
         </>
