@@ -1,3 +1,5 @@
+Curso Seguido: [Testando aplicações React com Jest & Testing Library](https://www.youtube.com/live/edXudaVB0Bg?si=ZybXgZiSa2d-dF20)
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
