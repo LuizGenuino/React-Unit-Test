@@ -153,7 +153,9 @@ const config: Config = {
     testEnvironment: "jsdom",
 
     // Options that will be passed to the testEnvironment
-    // testEnvironmentOptions: {},
+    testEnvironmentOptions: {
+        customExportConditions: [''], // Permite que o MSW resolva tanto 'node' quanto 'browser'
+    },
 
     // Adds a location field to test results
     // testLocationInResults: false,
@@ -207,10 +209,9 @@ const config: Config = {
     },
 
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-    // transformIgnorePatterns: [
-    //   "\\\\node_modules\\\\",
-    //   "\\.pnp\\.[^\\\\]+$"
-    // ],
+    transformIgnorePatterns: [
+        'node_modules/(?!(msw|@mswjs|until-async|rettime)/)',
+    ],
 
     // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
     // unmockedModulePathPatterns: undefined,

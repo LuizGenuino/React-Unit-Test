@@ -1,6 +1,7 @@
 import { useState } from "react"
 import List from "./components/List"
 import Button from "./components/Button"
+import Tasks from "./components/Tasks"
 
 function App() {
 
@@ -16,6 +17,8 @@ function App() {
             <Button disabled={true} onClick={() => console.log('cick')}>Click me</Button>
 
             <List initialItems={['Luiz', 'Gustavo', 'Lucas']} />
+
+            <Tasks />
         </>
     )
 }
